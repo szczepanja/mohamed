@@ -1,4 +1,4 @@
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{DataFrame, SparkSession}
 
 object Mohamed extends App {
 
@@ -8,4 +8,7 @@ object Mohamed extends App {
     .master("local[*]")
     .getOrCreate()
 
+  val places = spark.read.option("header", value = true).option("inferSchema", value = true).csv("places.csv")
+
+  places.show
 }
