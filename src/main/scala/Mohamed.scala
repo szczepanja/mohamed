@@ -4,11 +4,15 @@ object Mohamed extends App {
 
   val spark: SparkSession = SparkSession
     .builder()
-    .appName("spark-split")
+    .appName("spark-mohamed")
     .master("local[*]")
     .getOrCreate()
 
-  val places = spark.read.option("header", value = true).option("inferSchema", value = true).csv("places.csv")
+  val (filePath, columnName) = (args.head, args.tail)
 
-  places.show
+  val places = spark.read
+    .option("header", value = true)
+    .option("inferSchema", value = true)
+    .csv(filePath)
+
 }
