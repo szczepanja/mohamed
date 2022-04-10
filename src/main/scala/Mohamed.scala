@@ -15,4 +15,11 @@ object Mohamed extends App {
     .option("inferSchema", value = true)
     .csv(filePath)
 
+  import org.apache.spark.sql.functions._
+
+  def toUpperColumn: DataFrame = columnName.foldLeft(places)((column, arg) => {
+    column.withColumn("upper_" + arg, upper(col(arg)))
+  })
+
+  toUpperColumn.show()
 }
