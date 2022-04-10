@@ -21,5 +21,5 @@ object Mohamed extends App {
     column.withColumn("upper_" + arg, upper(col(arg)))
   })
 
-  toUpperColumn.show()
+  toUpperColumn.show
 }
